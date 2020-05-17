@@ -1,5 +1,10 @@
-var display_value = 40;
+var currentValue = '';
+//Var to access Display
 const display_content = document.getElementById('display-calc');
+const displayPrev = document.getElementById('prev-calc');
+const displayCurr = document.getElementById('curr-calc');
+
+//Var to access the Buttons on the Dom
 const numberButtons = document.querySelectorAll('[data-number]');
 const operationButtons = document.querySelectorAll('[data-operation]');
 const equalsButton = document.querySelector('[data-equals]');
@@ -36,16 +41,19 @@ function add(a, b){
   }
 
   function appendNumber(buttonText) {
-    display_content.innerHTML = buttonText;
+    console.log(display_content.innerHTML);
+    //display_content.innerHTML += buttonText;
+    display_content.innerHTML += buttonText;
   }
 
   function updateDisplay(){
-    display_content.innerText;
+    console.log(display_content.innerText);
+    display_content.innerText = buttonText;
   }
+  //I need updateDisplay to permanently update the display
 
   numberButtons.forEach(function(button) {
     button.addEventListener('click', function(){
-      console.log(button.innerText);
       appendNumber(button.innerText);
       updateDisplay(button.innerText);
     })
@@ -53,7 +61,7 @@ function add(a, b){
 
   //Function which clears the display back to 0
 
-
+console.log(currentValue);
   //Need to for loop over the buttons, possibly use if else if statements to check the button*
   //for (var i = 0)
 

@@ -27,28 +27,40 @@ function add(a, b){
     return a / b;
   }
 
-  /*function operate(operator, a, b){
-    return operator(a, b);  
-  }*/
+  function chooseOperation(){
+    //This function should run through the whole string then apply the logic
+    //of the previous functions
+    if(displayCurr.innerHTML.includes('+')){
+      //How to determine what is a and what is b after
+
+    }
+  }
 
   function clear(){
     displayCurr.innerHTML = '';
-    displayPrev.innnerHTML = '';
-
+    displayPrev.innerHTML = '';
   }
 
   function deleteNum(){
-
+    var newStr = displayCurr.innerHTML.slice(0, -1);
+    displayCurr.innerHTML = newStr;
   }
 
   function appendNumber(buttonText) {
-    console.log(display_content.innerHTML);
+    //Feels like this should not just add
+    console.log(buttonText);
+    if(buttonText === '.' && displayCurr.innerHTML.includes('.')){
+    return 
+    }
     displayCurr.innerHTML += buttonText;
   }
 
   function updateDisplay(){
-    console.log(display_content.innerText);
-    displayCurr.innerText = buttonText;
+    //What is the purpose of this update Display
+    //Should this be used for the equal value
+    console.log('somewhereovertherainbow');
+    displayPrev.innerText = displayCurr.innerHTML;
+    displayCurr.innerText === '';
   }
 
   //The Buttons are constantly reloading my page; Some weird behavior with the DOM
@@ -56,7 +68,29 @@ function add(a, b){
   numberButtons.forEach(function(button) {
     button.addEventListener('click', function(){
       appendNumber(button.innerText);
-      updateDisplay(button.innerText);
     })
   })
 
+  operationButtons.forEach(function(button) {
+    button.addEventListener('click', function(){
+      if(button.innerText === '/'){
+        appendNumber(button.innerText);
+        updateDisplay();
+        //Add in addition function
+      } else if(button.innerText === '*'){
+        appendNumber(button.innerText);
+        updateDisplay(button.innerText);
+        //Add in the multiplation 
+      } else if(button.innerText === '-'){
+        appendNumber(button.innerText);
+        updateDisplay(button.innerText);
+      } else if(button.innerText === '+'){
+        appendNumber(button.innerText);
+        updateDisplay(button.innerText);
+      }
+    })
+  })
+
+  equalsButton.addEventListener('click', chooseOperation);
+  deleteButton.addEventListener('click', deleteNum);
+  clearButton.addEventListener('click', clear);
